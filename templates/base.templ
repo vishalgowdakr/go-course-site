@@ -1,0 +1,21 @@
+package templates
+
+import "context"
+
+templ Base(c context.Context) {
+	<html>
+		<head>
+			<title>{ c.Value("title").(string) }</title>
+			<link rel="stylesheet" href="/public/css/styles.css" type="text/css"/>
+		</head>
+		<body>
+			<nav>
+				<h1 class="title">{ c.Value("title").(string) }</h1>
+				<a href="/">Home</a>
+				<a href="/about">About</a>
+				<a href="/contact">Contact</a>
+			</nav>
+			<hr/>
+		</body>
+	</html>
+}
