@@ -242,9 +242,7 @@ func (m *Model) View() templ.Component {
 		if m.IsHxRequest {
 			return templ.Raw(string(mdToHtml(m.Units[m.Index].Lessons[m.Units[m.Index].Index].Body)) + "<script>hljs.highlightAll();</script>")
 		}
-		return templates.Lessons(templates.LessonArgs{
-			Content: string(mdToHtml(m.Units[m.Index].Lessons[m.Units[m.Index].Index].Body)),
-		})
+		return templates.Lessons()
 	default:
 		return templates.Home()
 	}
