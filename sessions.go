@@ -52,11 +52,11 @@ func getOrCreateModel(c echo.Context) (*Model, error) {
 	}
 	log.Print("New session: ", sessionID)
 	model := &Model{}
-	homeDir, err := os.UserHomeDir()
+	cwd, err := os.Getwd()
 	if err != nil {
 		return nil, fmt.Errorf("failed to get home directory: %w", err)
 	}
-	filep := filepath.Join(homeDir, "personal", "course-site", "lessons")
+	filep := filepath.Join(cwd, "lessons")
 	if err := model.Init(filep, c); err != nil {
 		return nil, fmt.Errorf("failed to initialize model: %w", err)
 	}

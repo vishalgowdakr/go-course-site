@@ -237,7 +237,10 @@ func (m *Model) View() templ.Component {
 
 	switch m.CurrentState {
 	case homePage:
-		return templates.Home()
+		if m.IsHxRequest {
+			return templates.Home()
+		}
+		return templates.Base()
 	case lessonPage:
 		if m.IsHxRequest {
 			return templ.Raw(string(mdToHtml(m.Units[m.Index].Lessons[m.Units[m.Index].Index].Body)) + "<script>hljs.highlightAll();</script>")
@@ -253,6 +256,17 @@ func main() {
 	e.Use(setModel)
 
 	e.GET("/", withModel(func(model *Model, c echo.Context) error {
+		model.Update(GotoMsg{Page: homePage})
+		return model.View().Render(c.Request().Context(), c.Response().Writer)
+	}))
+
+	e.GET("/home", withModel(func(model *Model, c echo.Context) error {
+		if c.Request().Header.Get("HX-Request") == "true" {
+			model.IsHxRequest = true
+			defer func() {
+				model.IsHxRequest = false
+			}()
+		}
 		model.Update(GotoMsg{Page: homePage})
 		return model.View().Render(c.Request().Context(), c.Response().Writer)
 	}))

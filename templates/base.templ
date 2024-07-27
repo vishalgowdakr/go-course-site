@@ -1,29 +1,31 @@
 package templates
 
 templ Base() {
-	<html>
-		<head>
-			<title>
-				{ "Default Title" }
-			</title>
-			<link
-				rel="stylesheet"
-				href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/default.min.css"
-			/>
-			<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
-			<script src="https://unpkg.com/htmx.org@2.0.1"></script>
-			<link rel="stylesheet" href="/public/css/styles.css" type="text/css"/>
-		</head>
-		<body>
-			<nav>
-				<a href="/">Home</a>
-				<a id="lessons" hx-get="/lessons" hx-target=".Page" hx-swap="outerHTML">Lessons</a>
-			</nav>
-			<hr/>
-			{ children... }
-			<footer>
-				<p>&copy; 2024</p>
-			</footer>
-		</body>
-	</html>
+<html>
+
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=0.8" />
+	<title>
+		{ "Default Title" }
+	</title>
+	<link rel="stylesheet"
+		href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/default.min.css" />
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
+	<script src="https://unpkg.com/htmx.org@2.0.1"></script>
+	<link rel="stylesheet" href="/public/css/styles.css" type="text/css" />
+</head>
+
+<body>
+	<nav>
+		<h2 hx-get="/home" hx-target=".Page" hx-swap="outerHTML">Home</h2>
+		<a class="nav-links" hx-get="/lessons" hx-target=".Page" hx-swap="outerHTML">Lessons</a>
+	</nav>
+	<hr />
+	<div class="Page"></div>
+	<footer hx-trigger="load" hx-get="/home" hx-target=".Page" hx-swap="outerHTML">
+		<p>&copy; 2024</p>
+	</footer>
+</body>
+
+</html>
 }

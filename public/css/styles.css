@@ -8,7 +8,12 @@ body {
 	background-color: var(--secondary-color);
 	color: var(--tertiary-color);
 	font-family: 'Courier New', Courier, monospace;
+	margin: 0;
+	padding: 0;
+	font-size: 20px;
+	line-height: 2;
 }
+
 
 h1,
 h2,
@@ -21,16 +26,19 @@ pre {
 	color: var(--tertiary-color);
 	padding: 10px;
 	border-radius: 5px;
+	overflow-x: auto;
+	white-space: pre-wrap;
+	word-wrap: break-word;
 }
 
 nav {
 	display: flex;
 	flex-direction: row;
-	padding: 10px;
+	padding: 0 auto;
 	justify-content: space-around;
 }
 
-#lessons {
+.nav-links {
 	cursor: pointer;
 }
 
@@ -41,6 +49,7 @@ nav {
 	color: var(--tertiary-color);
 	padding: 10px;
 	cursor: pointer;
+	margin: 5px;
 }
 
 #next:hover,
@@ -52,6 +61,7 @@ nav {
 .pgButtons {
 	display: flex;
 	flex-direction: row;
+	flex-wrap: wrap;
 	justify-content: space-between;
 }
 
@@ -59,24 +69,76 @@ nav {
 	display: flex;
 	flex-direction: column;
 	justify-content: space-around;
-	align-items: start;
+	align-items: flex-start;
 	margin: 10px;
-	width: 70%;
+	width: 100%;
+	box-sizing: border-box;
 }
 
 a {
 	color: #819751;
+	word-wrap: break-word;
 }
 
 .LessonWrapper {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
+	width: 100%;
 }
 
-.PageWrapper {
-	width: 70%;
-	display: flex;
-	flex-direction: column;
-	justify-items: center;
+.Page {
+	width: 100%;
+	max-width: 800px;
+	margin: 0 auto;
+	padding: 0 15px;
+	box-sizing: border-box;
+}
+
+img {
+	max-width: 100%;
+	height: auto;
+}
+
+footer {
+	text-align: center;
+	padding: 10px;
+}
+
+@media screen and (max-width: 600px) {
+	body {
+		font-size: 20px;
+	}
+
+	h1 {
+		font-size: 1.8em;
+	}
+
+	h2 {
+		font-size: 1.5em;
+	}
+
+	nav {
+		display: flex;
+		flex-direction: column;
+		padding-left: 10px;
+
+	}
+
+	.nav-links {
+		margin-bottom: 10px;
+	}
+
+	#next,
+	#prev {
+		width: 70%;
+	}
+
+	.pgButtons {
+		flex-direction: column;
+	}
+
+	.Page {
+		padding: 0 10px;
+	}
 }

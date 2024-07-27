@@ -26,7 +26,7 @@ func Lessons() templ.Component {
 			templ_7745c5c3_Var1 = templ.NopComponent
 		}
 		ctx = templ.ClearChildren(ctx)
-		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<div class=\"Page\" hx-trigger=\"load\" hx-get=\"/lessons/prev\" hx-target=\"#lesson\"><div class=\"pgButtons\"><a id=\"prev\" hx-get=\"/lessons/prev\" hx-target=\"#lesson\" hx-swap=\"innerHTML\">Previous lesson</a> <a id=\"next\" hx-get=\"/lessons/next\" hx-target=\"#lesson\" hx-swap=\"innerHTML\">Next lesson</a></div><br><div class=\"LessonWrapper\"><div id=\"lesson\"></div></div><div class=\"pgButtons\"><a id=\"prev\" hx-get=\"/lessons/prev\" hx-target=\"#lesson\" hx-swap=\"innerHTML\">Previous lesson</a> <a id=\"next\" hx-get=\"/lessons/next\" hx-target=\"#lesson\" hx-swap=\"innerHTML\">Next lesson</a></div></div>")
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<div class=\"Page\" hx-trigger=\"load\" hx-get=\"/lessons/prev\" hx-target=\"#lesson\"><div class=\"pgButtons\"><a id=\"prev\" hx-get=\"/lessons/prev\" hx-target=\"#lesson\" hx-swap=\"innerHTML scroll:#lesson:top\">&lt;-- Previous lesson</a> <a id=\"next\" hx-get=\"/lessons/next\" hx-target=\"#lesson\" hx-swap=\"innerHTML scroll:#lesson:top\">Next lesson --&gt;</a></div><br><div class=\"LessonWrapper\"><div id=\"lesson\"></div></div><div class=\"pgButtons\"><a id=\"prev\" hx-get=\"/lessons/prev\" hx-target=\"#lesson\" hx-swap=\"innerHTML scroll:#lesson:top\">&lt;-- Previous lesson</a> <a id=\"next\" hx-get=\"/lessons/next\" hx-target=\"#lesson\" hx-swap=\"innerHTML scroll:#lesson:top\">Next lesson --&gt;</a></div></div>")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
