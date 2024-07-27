@@ -8,9 +8,7 @@ tmp_dir = "tmp"
   cmd = "go build -o ./tmp/main ."
   delay = 1000
   exclude_dir = ["assets", "tmp", "vendor", "testdata"]
-  # exclude every go file in the templates directory
-  exclude_file = ["templates/*.go"]
-  exclude_regex = ["_test.go"]
+  exclude_regex = ["_test.go", "_templ.go"]
   exclude_unchanged = false
   follow_symlink = false
   full_bin = ""

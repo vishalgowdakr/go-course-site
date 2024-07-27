@@ -1,0 +1,12 @@
+{
+	"name": "Docker Alchemy",
+	"description": "turning code into scalable containers",
+	"banner": "https://utfs.io/f/c371e270-9246-4b27-967f-a8a200c6083c-lxr74w.webp",
+	"authors": [
+	{
+		"name": "Vishal",
+		"bio": "I am a htmx developer",
+		"avatar": "https://github.com/shadcn.png"
+	}
+	]
+}

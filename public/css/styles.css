@@ -1,6 +1,26 @@
+:root {
+	--primary-color: #ac4242;
+	--secondary-color: #181818;
+	--tertiary-color: #f0f0f0;
+}
+
 body {
-	background-color: black;
-	color: white;
+	background-color: var(--secondary-color);
+	color: var(--tertiary-color);
+	font-family: 'Courier New', Courier, monospace;
+}
+
+h1,
+h2,
+strong {
+	color: var(--primary-color);
+}
+
+pre {
+	background-color: var(--secondary-color);
+	color: var(--tertiary-color);
+	padding: 10px;
+	border-radius: 5px;
 }
 
 nav {
@@ -8,4 +28,55 @@ nav {
 	flex-direction: row;
 	padding: 10px;
 	justify-content: space-around;
+}
+
+#lessons {
+	cursor: pointer;
+}
+
+#next,
+#prev {
+	background-color: var(--secondary-color);
+	border: 1px solid var(--tertiary-color);
+	color: var(--tertiary-color);
+	padding: 10px;
+	cursor: pointer;
+}
+
+#next:hover,
+#prev:hover {
+	background-color: var(--tertiary-color);
+	color: var(--secondary-color);
+}
+
+.pgButtons {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+}
+
+#lesson {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-around;
+	align-items: start;
+	margin: 10px;
+	width: 70%;
+}
+
+a {
+	color: #819751;
+}
+
+.LessonWrapper {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.PageWrapper {
+	width: 70%;
+	display: flex;
+	flex-direction: column;
+	justify-items: center;
 }
