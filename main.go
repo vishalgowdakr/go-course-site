@@ -9,7 +9,6 @@ import (
 	"net/http"
 	"os"
 	"path/filepath"
-	"sync"
 
 	"github.com/a-h/templ"
 	"github.com/gomarkdown/markdown"
@@ -32,7 +31,6 @@ type Lesson struct {
 }
 
 type Model struct {
-	mu           sync.RWMutex
 	CurrentState int
 	Index        int
 	Units        []Unit
@@ -89,8 +87,6 @@ func mdToHtml(md []byte) []byte {
 }
 
 func (m *Model) Init(basePath string, c echo.Context) error {
-	m.mu.Lock()
-	defer m.mu.Unlock()
 
 	m.CurrentState = homePage
 	m.Units = []Unit{}
@@ -170,9 +166,6 @@ func (m *Model) Init(basePath string, c echo.Context) error {
 }
 
 func (m *Model) Update(msg Msg) {
-	m.mu.Lock()
-	defer m.mu.Unlock()
-
 	if len(m.Units) == 0 {
 		// Handle the case when there are no units
 		m.Err = fmt.Errorf("no units available")
@@ -232,23 +225,18 @@ func (m *Model) Update(msg Msg) {
 }
 
 func (m *Model) View() templ.Component {
-	m.mu.RLock()
-	defer m.mu.RUnlock()
-
 	switch m.CurrentState {
 	case homePage:
 		if m.IsHxRequest {
 			return templates.Home()
 		}
-		return templates.Base()
 	case lessonPage:
 		if m.IsHxRequest {
 			return templ.Raw(string(mdToHtml(m.Units[m.Index].Lessons[m.Units[m.Index].Index].Body)) + "<script>hljs.highlightAll();</script>")
 		}
 		return templates.Lessons()
-	default:
-		return templates.Home()
 	}
+	return templates.Base()
 }
 
 func main() {
