@@ -4,7 +4,8 @@ templ Lessons() {
 <div class="Page" hx-trigger="load" hx-get="/lessons/prev" hx-target="#lesson">
 	<div class="pgButtons">
 		// these buttons replace the #lesson div with the previous or next lesson
-		<a id="prev" hx-get="/lessons/prev" hx-target="#lesson" hx-swap="innerHTML scroll:#lesson:top">
+		<a id="prev" hx-get="/lessons/prev/{ .prev }" hx-target="#lesson"
+			hx-swap="innerHTML scroll:#lesson:top">
 			&lt;-- Previous
 			lesson
 		</a>
@@ -14,7 +15,6 @@ templ Lessons() {
 		</a>
 	</div>
 	<br />
-	// this div inserts the highlight script at the end of body
 	<div class="LessonWrapper">
 		<div id="lesson"></div>
 	</div>

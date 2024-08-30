@@ -31,15 +31,23 @@ func Base() templ.Component {
 			return templ_7745c5c3_Err
 		}
 		var templ_7745c5c3_Var2 string
-		templ_7745c5c3_Var2, templ_7745c5c3_Err = templ.JoinStringErrs("Default Title")
+		templ_7745c5c3_Var2, templ_7745c5c3_Err = templ.JoinStringErrs("Course Site")
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/base.templ`, Line: 8, Col: 21}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/base.templ`, Line: 8, Col: 19}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var2))
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("</title><link rel=\"stylesheet\" href=\"https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/default.min.css\"><script src=\"https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js\"></script><script src=\"https://unpkg.com/htmx.org@2.0.1\"></script><link rel=\"stylesheet\" href=\"/public/css/styles.css\" type=\"text/css\"></head><body><nav><h3 class=\"nav-links\" hx-get=\"/home\" hx-target=\".Page\" hx-swap=\"outerHTML\">Home</h3><h3 class=\"nav-links\" hx-get=\"/lessons\" hx-target=\".Page\" hx-swap=\"outerHTML\">Lessons</h3></nav><hr><div class=\"Page\"></div><footer hx-trigger=\"load\" hx-get=\"/home\" hx-target=\".Page\" hx-swap=\"outerHTML\"><p>&copy; 2024</p></footer></body></html>")
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("</title><link rel=\"stylesheet\" href=\"https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/default.min.css\"><script src=\"https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js\"></script><script src=\"https://unpkg.com/htmx.org@2.0.1\"></script><link rel=\"stylesheet\" href=\"/public/css/styles.css\" type=\"text/css\"></head><body><nav><a href=\"\">Home</a> <a href=\"lessons\">Lessons</a></nav><hr>")
+		if templ_7745c5c3_Err != nil {
+			return templ_7745c5c3_Err
+		}
+		templ_7745c5c3_Err = templ_7745c5c3_Var1.Render(ctx, templ_7745c5c3_Buffer)
+		if templ_7745c5c3_Err != nil {
+			return templ_7745c5c3_Err
+		}
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<footer><p>&copy; 2024</p></footer></body></html>")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}

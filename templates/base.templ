@@ -5,7 +5,7 @@ templ Base() {
 		<head>
 			<meta name="viewport" content="width=device-width, initial-scale=0.8"/>
 			<title>
-				{ "Default Title" }
+				{ "Course Site" }
 			</title>
 			<link
 				rel="stylesheet"
@@ -17,12 +17,12 @@ templ Base() {
 		</head>
 		<body>
 			<nav>
-				<h3 class="nav-links" hx-get="/home" hx-target=".Page" hx-swap="outerHTML">Home</h3>
-				<h3 class="nav-links" hx-get="/lessons" hx-target=".Page" hx-swap="outerHTML">Lessons</h3>
+				<a href="">Home</a>
+				<a href="lessons">Lessons</a>
 			</nav>
 			<hr/>
-			<div class="Page"></div>
-			<footer hx-trigger="load" hx-get="/home" hx-target=".Page" hx-swap="outerHTML">
+			{ children... }
+			<footer>
 				<p>&copy; 2024</p>
 			</footer>
 		</body>

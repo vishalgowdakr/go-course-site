@@ -82,8 +82,12 @@ nav {
 }
 
 a {
-	color: #819751;
+	color: #ac4242;
 	word-wrap: break-word;
+}
+
+a:active {
+	color: #819751;
 }
 
 .LessonWrapper {

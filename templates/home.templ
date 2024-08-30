@@ -1,14 +1,16 @@
 package templates
 
 templ Home() {
-	<div class="Page">
-		<div id="Banner">
-			<div id="BannerText">
-				<h1>My Website</h1>
-			</div>
-			<div id="Logo">
-				<img src="public/images/logo.webp" alt="Logo"/>
+	@Base() {
+		<div class="Page">
+			<div id="Banner">
+				<div id="BannerText">
+					<h1>My Website</h1>
+				</div>
+				<div id="Logo">
+					<img src="public/images/logo.webp" alt="Logo"/>
+				</div>
 			</div>
 		</div>
-	</div>
+	}
 }
