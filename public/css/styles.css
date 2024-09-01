@@ -18,6 +18,14 @@ body {
 	cursor: pointer;
 }
 
+#ContentWrapper {
+	display: flex;
+	flex-direction: row;
+
+}
+
+.ad-coloumn {}
+
 h1,
 h2,
 h3,
@@ -122,6 +130,10 @@ footer {
 	display: flex;
 	flex-direction: row;
 	justify-content: space-between;
+}
+
+#lessons {
+	cursor: pointer;
 }
 
 #Logo {

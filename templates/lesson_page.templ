@@ -1,30 +1,33 @@
 package templates
 
-templ Lessons() {
-<div class="Page" hx-trigger="load" hx-get="/lessons/prev" hx-target="#lesson">
+templ Lessons(content string, prevUrl string, nextUrl string) {
+<div class="Page">
 	<div class="pgButtons">
 		// these buttons replace the #lesson div with the previous or next lesson
-		<a id="prev" hx-get="/lessons/prev/{ .prev }" hx-target="#lesson"
-			hx-swap="innerHTML scroll:#lesson:top">
+		<a id="prev" hx-get={ prevUrl } hx-target=".Page" hx-swap="innerHTML scroll:#lesson:top">
 			&lt;-- Previous
 			lesson
 		</a>
-		<a id="next" hx-get="/lessons/next" hx-target="#lesson" hx-swap="innerHTML scroll:#lesson:top">
+		<a id="next" hx-get={ nextUrl } hx-target=".Page" hx-swap="innerHTML scroll:#lesson:top">
 			Next
 			lesson --&gt;
 		</a>
 	</div>
 	<br />
-	<div class="LessonWrapper">
-		<div id="lesson"></div>
+	<div id="ContentWrapper">
+		<div id="ad-coloumn-1"></div>
+		<div id="lesson">
+			@templ.Raw(content)
+		</div>
+		<div id="ad-coloumn-2"></div>
 	</div>
 	<div class="pgButtons">
 		// these buttons replace the #lesson div with the previous or next lesson
-		<a id="prev" hx-get="/lessons/prev" hx-target="#lesson" hx-swap="innerHTML scroll:#lesson:top">
+		<a id="prev" hx-get={ prevUrl } hx-target=".Page" hx-swap="innerHTML scroll:#lesson:top">
 			&lt;-- Previous
 			lesson
 		</a>
-		<a id="next" hx-get="/lessons/next" hx-target="#lesson" hx-swap="innerHTML scroll:#lesson:top">
+		<a id="next" hx-get={ nextUrl } hx-target=".Page" hx-swap="innerHTML scroll:#lesson:top">
 			Next
 			lesson --&gt;
 		</a>
