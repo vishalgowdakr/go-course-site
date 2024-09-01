@@ -123,7 +123,7 @@ func main() {
 		c.Response().Status = status
 		return templates.Lessons(content+"<script>hljs.highlightAll();</script>", prevUrl, nextUrl).Render(c.Request().Context(), c.Response().Writer)
 	})
-	e.StdLogger.Fatal(e.Start("localhost:6996"))
+	e.StdLogger.Fatal(e.Start("localhost:10000"))
 }
 
 func mdToHtml(md []byte) []byte {
