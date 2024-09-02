@@ -100,24 +100,20 @@ func main() {
 		unit := c.Param("unit")
 		unitInt, err := strToInt(unit)
 		if err != nil {
-			c.Response().Status = http.StatusBadRequest
-			return templates.Home().Render(c.Request().Context(), c.Response().Writer)
+			return redirectToHome(c)
 		}
 		chapter := c.Param("chapter")
 		chapterInt, err := strToInt(chapter)
 		if err != nil {
-			c.Response().Status = http.StatusBadRequest
-			return templates.Home().Render(c.Request().Context(), c.Response().Writer)
+			return redirectToHome(c)
 		}
 		nextUrl, err := nextChapter(&m, unitInt, chapterInt)
 		if err != nil {
-			c.Response().Status = http.StatusBadRequest
-			return templates.Home().Render(c.Request().Context(), c.Response().Writer)
+			return redirectToHome(c)
 		}
 		prevUrl, err := prevChapter(&m, unitInt, chapterInt)
 		if err != nil {
-			c.Response().Status = http.StatusBadRequest
-			return templates.Home().Render(c.Request().Context(), c.Response().Writer)
+			return redirectToHome(c)
 		}
 		content, status := goTo(&m, unitInt, chapterInt)
 		c.Response().Status = status
@@ -208,4 +204,9 @@ func prevChapter(m *Model, unit int, chapter int) (string, error) {
 
 	// If we're at the first chapter of the first unit, return the current URL
 	return fmt.Sprintf("/to/%d/%d", unit, chapter), nil
+}
+
+func redirectToHome(c echo.Context) error {
+	c.Response().Status = http.StatusBadRequest
+	return templates.Home().Render(c.Request().Context(), c.Response().Writer)
 }
