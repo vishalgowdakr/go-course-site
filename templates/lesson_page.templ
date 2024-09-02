@@ -1,36 +1,11 @@
 package templates
 
-templ Lessons(content string, prevUrl string, nextUrl string) {
-<div class="Page">
-	<div class="pgButtons">
-		// these buttons replace the #lesson div with the previous or next lesson
-		<a id="prev" hx-get={ prevUrl } hx-target=".Page" hx-swap="innerHTML scroll:#lesson:top">
-			&lt;-- Previous
-			lesson
-		</a>
-		<a id="next" hx-get={ nextUrl } hx-target=".Page" hx-swap="innerHTML scroll:#lesson:top">
-			Next
-			lesson --&gt;
-		</a>
-	</div>
-	<br />
-	<div id="ContentWrapper">
-		<div id="ad-coloumn-1"></div>
-		<div id="lesson">
-			@templ.Raw(content)
-		</div>
-		<div id="ad-coloumn-2"></div>
-	</div>
-	<div class="pgButtons">
-		// these buttons replace the #lesson div with the previous or next lesson
-		<a id="prev" hx-get={ prevUrl } hx-target=".Page" hx-swap="innerHTML scroll:#lesson:top">
-			&lt;-- Previous
-			lesson
-		</a>
-		<a id="next" hx-get={ nextUrl } hx-target=".Page" hx-swap="innerHTML scroll:#lesson:top">
-			Next
-			lesson --&gt;
-		</a>
-	</div>
-</div>
+templ Lessons(fullpage bool, content string, prevUrl string, nextUrl string) {
+if fullpage == true {
+@Base() {
+@LessonComponent(content, prevUrl, nextUrl)
+}
+} else {
+@LessonComponent(content, prevUrl, nextUrl)
+}
 }
