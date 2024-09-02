@@ -87,15 +87,14 @@ func main() {
 	e := echo.New()
 	e.Use(middleware.Logger())
 	e.Static("public/", "public")
+
 	m := Model{}
 	m.init()
 
-	// Root path
 	e.GET("", func(c echo.Context) error {
 		return templates.Home().Render(c.Request().Context(), c.Response().Writer)
 	})
 
-	//goto path
 	e.GET("to/:unit/:chapter", func(c echo.Context) error {
 		unit := c.Param("unit")
 		unitInt, err := strToInt(unit)
