@@ -97,7 +97,7 @@ func main() {
 
 	e.GET("to/:unit/:chapter", func(c echo.Context) error {
 		fullpage := false
-		if !isHtmxReq(c) {
+		if !isHtmxRequest(c) {
 			fullpage = true
 		}
 		unit := c.Param("unit")
@@ -119,8 +119,9 @@ func main() {
 			return redirectToHome(c)
 		}
 		content, status := goTo(&m, unitInt, chapterInt)
+		content += "<script>hljs.highlightAll();</script>"
 		c.Response().Status = status
-		return templates.Lessons(fullpage, content+"<script>hljs.highlightAll();</script>", prevUrl, nextUrl).Render(c.Request().Context(), c.Response().Writer)
+		return templates.Lessons(fullpage, templates.LessonData{Content: content, PrevUrl: prevUrl, NextUrl: nextUrl}).Render(c.Request().Context(), c.Response().Writer)
 	})
 	e.StdLogger.Fatal(e.Start("0.0.0.0:10000"))
 }
@@ -209,7 +210,7 @@ func prevChapter(m *Model, unit int, chapter int) (string, error) {
 	return fmt.Sprintf("/to/%d/%d", unit, chapter), nil
 }
 
-func isHtmxReq(c echo.Context) bool {
+func isHtmxRequest(c echo.Context) bool {
 	if c.Request().Header.Get("Hx-Request") == "true" {
 		return true
 	}

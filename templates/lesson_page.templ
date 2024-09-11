@@ -1,11 +1,17 @@
 package templates
 
-templ Lessons(fullpage bool, content string, prevUrl string, nextUrl string) {
-if fullpage == true {
-@Base() {
-@LessonComponent(content, prevUrl, nextUrl)
+type LessonData struct {
+	Content string
+	PrevUrl string
+	NextUrl string
 }
-} else {
-@LessonComponent(content, prevUrl, nextUrl)
-}
+
+templ Lessons(fullpage bool, lessonData LessonData) {
+	if fullpage == true {
+		@Base() {
+			@LessonComponent(lessonData)
+		}
+	} else {
+		@LessonComponent(lessonData)
+	}
 }
